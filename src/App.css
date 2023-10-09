@@ -1,5 +1,19 @@
 .App {
   text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App >div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.App >div>div:nth-child(2){
+  flex:1;
+  display: flex;
 }
 
 .App-logo {

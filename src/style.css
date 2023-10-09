@@ -1,0 +1,299 @@
+*{
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  color: black;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+textarea {
+  height: 100px;
+}
+
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px; /* Thêm khoảng cách trên để ngăn lỗi trôi lên lần tiếp theo */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:disabled {
+  background-color: red;
+  cursor: not-allowed;
+}
+
+button:hover {
+  color: aliceblue;
+  background-color: black;
+}
+
+
+/* Login.css */
+
+.login {
+  max-width: 400px;
+  margin: 0 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.forgotPassword {
+  text-align: right;
+  width: 100%;
+}
+
+
+.formGroup {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+/* Header.css */
+
+.header {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  padding: 0.5rem 2rem;
+}
+
+.header h2 {
+  color: aliceblue;
+}
+
+.header div {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.header p{
+  color: aliceblue;
+}
+
+.header button {
+  width: fit-content;
+  background-color: transparent;
+  border: transparent;
+  color: aliceblue;
+  padding: 0;
+}
+
+.vertical-line{
+  border-left: 1px solid aliceblue;
+  height: 90%;
+  width: 1px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px black solid;
+  text-align: left;
+}
+
+.sidebar-title{
+  display: flex;
+  border-bottom: 1px solid black;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  overflow: hidden;
+  height: 3rem;
+}
+
+.sidebar-title button {
+  width: 5rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-nav a{
+  padding: 1rem 1rem;
+  height: 4rem;
+  font-size: 20px;
+}
+
+.sidebar-nav a.active, 
+.sidebar-nav a:hover{
+  background-color: black;
+  color: aliceblue;
+}
+
+.list .sidebar {
+  width: 100%;
+  border: none;
+}
+
+/* Section */
+.section {
+  flex: 1;
+  display: flex;
+}
+
+.section .list {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid black;
+}
+
+.section >div:nth-child(2){
+  width: 75%;
+}
+
+/* CSS cho thanh trang phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 16px;
+  list-style-type: none;
+  gap: 1px;
+}
+
+.pagination li {
+  border: 1px solid black;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.pagination .selected,
+.pagination li:hover {
+  cursor: pointer;
+  background-color: black;
+}
+
+.pagination li{
+  display: flex;
+}
+
+.pagination li a {
+  width: 100%;
+  height: 100%;
+}
+
+.pagination .selected a,
+.pagination li:hover a{
+  color: aliceblue;
+}
+
+/* Form */
+
+
+.form  {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  gap: 1.5rem;
+}
+
+.form-content >img {
+  flex: 0.5;
+  border-radius: 15px;
+  width: 20rem;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.form-content >div {
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+  text-align: left;
+}
+
+.form-btnBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Items */
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item {
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.item>div {
+  display: flex;
+  gap: 1rem;
+  
+}
+
+.item>div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
