@@ -23,6 +23,7 @@ import {
   UpdateFeature,
   Users,
 } from "./pages/admin";
+import CreateRestaurant from "./pages/restaurant/CreateRestaurant";
 
 function App() {
   const router = createBrowserRouter(
@@ -35,7 +36,17 @@ function App() {
             loader={loader.userLoader}
             id="root"
           >
-            <Route index element={<Dashboard />}></Route>
+            <Route
+              index
+              element={<Dashboard />}
+              action={action.deleteRestaurantAction}
+            ></Route>
+            <Route
+              path="create"
+              element={<CreateRestaurant />}
+              action={action.restaurantAction}
+            ></Route>
+            <Route path="update-restaurant/:restaurantId"></Route>
             <Route
               path="admin"
               element={<Admin />}

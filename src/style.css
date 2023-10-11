@@ -297,3 +297,78 @@ button:hover {
   height: 50px;
   border-radius: 10px;
 }
+
+/* Dashboard */
+.dashboard {
+  display: flex;
+  padding: 2rem 4rem;
+  height: 100%;
+}
+.dashboard >div{
+  flex: 0.5;
+  
+}
+
+.dashboard-content {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dashboard-content-item {
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px solid black;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+
+.dashboard-content-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+}
+
+.dashboard-content-item > div:first-child{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 62%;
+}
+
+
+.btnBox {
+  display: flex;
+  justify-content: space-between;
+  width: 38%;
+}
+
+.btnBox button {
+  width: 4.5rem;
+} 
+
+.titleBox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleBox button{
+  flex: 0.5;
+}
+
+/* Restaurant */
+.restaurant {
+  width: 100%;
+}
+
+.restaurant .form-content {
+  flex-direction: row;
+}
+
+.restaurant .form-content>img{
+  width: 50%;
+}

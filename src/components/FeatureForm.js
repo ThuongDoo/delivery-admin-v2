@@ -1,7 +1,6 @@
 import { ErrorMessage, Field, Formik, Form, FieldArray } from "formik";
 import React from "react";
 import * as Yup from "yup";
-import Items from "./Items";
 
 function FeatureForm({
   data = "",
@@ -53,18 +52,24 @@ function FeatureForm({
             </div>
             <div>
               <label htmlFor="restaurant">Restaurant</label>
-              <FieldArray
-                name="restaurant"
-                render={(arrayHelpers) => (
+              <FieldArray name="restaurant">
+                {({ push, remove }) => (
                   <div className="items">
-                    {values.restaurant.length > 0 &&
+                    {values.restaurant?.length > 0 &&
                       values.restaurant.map((item, index) => (
                         <div key={index} className="item">
                           <div>
                             <img src={item.image} alt={item.name} />
-                            <Field name={`restaurant.${index}`} as="select">
+                            <Field
+                              name={`restaurant.${index}._id`}
+                              as="select"
+                              className="item"
+                            >
+                              <option disabled selected>
+                                Select Restaurant
+                              </option>
                               {restaurantData.map((option, index) => (
-                                <option value={option._id}>
+                                <option value={option._id} key={option._id}>
                                   {option.name}
                                 </option>
                               ))}
@@ -75,7 +80,7 @@ function FeatureForm({
                               type="button"
                               className="item-button"
                               onClick={() => {
-                                arrayHelpers.remove(index);
+                                remove(index);
                               }}
                             >
                               X
@@ -86,13 +91,13 @@ function FeatureForm({
                     <button
                       className="items-button"
                       type="button"
-                      onClick={() => arrayHelpers.push({ name: "", image: "" })}
+                      onClick={() => push({ name: "", image: "" })}
                     >
                       Add Restaurant
                     </button>
                   </div>
                 )}
-              />
+              </FieldArray>
             </div>
             <div>
               <label htmlFor="description">Description</label>

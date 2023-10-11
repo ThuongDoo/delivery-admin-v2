@@ -1,9 +1,10 @@
 import React from "react";
 import api from "../../../services/api";
-import { useSubmit } from "react-router-dom";
+import { useRouteLoaderData, useSubmit } from "react-router-dom";
 import FeatureForm from "../../../components/FeatureForm";
 
 function CreateFeature() {
+  const { restaurant } = useRouteLoaderData("feature");
   const submit = useSubmit();
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
@@ -16,7 +17,11 @@ function CreateFeature() {
   };
   return (
     <div>
-      <FeatureForm onSubmit={handleSubmit} isCreate />
+      <FeatureForm
+        onSubmit={handleSubmit}
+        isCreate
+        restaurantData={restaurant}
+      />
     </div>
   );
 }

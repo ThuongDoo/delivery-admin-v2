@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom";
+import api from "../services/api";
 
 // const async function
 export async function categoryAction() {
@@ -7,4 +8,15 @@ export async function categoryAction() {
 
 export async function featureAction() {
   return redirect("../");
+}
+
+export async function restaurantAction() {
+  return redirect("../");
+}
+
+export async function deleteRestaurantAction({ request }) {
+  const formData = await request.formData();
+  const id = formData.get("restaurantId");
+  await api.delete(`/restaurant/${id}`);
+  return redirect("/");
 }

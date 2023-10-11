@@ -3,7 +3,9 @@ import api from "./api";
 export async function userLoader() {
   const res = await api.get("/user/showMe");
   const user = res.data.user;
-  return { user };
+  const resRestaurant = await api.get("/restaurant");
+  const restaurant = resRestaurant.data.restaurant;
+  return { user, restaurant };
 }
 
 export async function categoryLoader() {
