@@ -58,7 +58,18 @@ button:hover {
 
 /* Login.css */
 
-.login {
+.App .login{
+  /* background-color: rebeccapurple; */
+  padding: 0;
+  flex-direction: row;
+  background-image: url('https://plus.unsplash.com/premium_photo-1673108852141-e8c3c22a4a22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); /* Thay 'url_cua_anh.jpg' bằng URL thực của ảnh bạn muốn sử dụng */
+  background-size: cover; /* Đảm bảo ảnh nền được căn chỉnh sao cho nó bao phủ toàn bộ nền của trang */
+  background-repeat: no-repeat; /* Ngăn ảnh nền lặp lại */
+  background-attachment: fixed;
+}
+
+.login div {
+  width: 400px;
   max-width: 400px;
   margin: 0 0;
   padding: 20px;
@@ -66,12 +77,14 @@ button:hover {
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
 }
 
 .login form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
 }
 
 .login h2 {
@@ -86,10 +99,13 @@ button:hover {
 }
 
 
-.formGroup {
+.login .formGroup {
   text-align: left;
   margin-bottom: 15px;
+  width: 100%;
 }
+
+
 
 /* Header.css */
 
@@ -264,6 +280,9 @@ button:hover {
   flex: 0.5;
   text-align: left;
 }
+.form-content >div>img {
+  width: 50px;
+}
 
 .form-btnBox {
   display: flex;
@@ -371,4 +390,22 @@ button:hover {
 
 .restaurant .form-content>img{
   width: 50%;
+}
+
+/* Food */
+
+.category div{
+  display: flex;
+  gap: 1.5rem;
+}
+.category select {
+  padding: 0.5rem;
+  flex: 1;
+}
+
+
+.category img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
 }

@@ -7,7 +7,7 @@ import {
   useParams,
   useRouteLoaderData,
 } from "react-router-dom";
-import List from "../../components/List";
+import List from "../../../components/List";
 
 function Food() {
   const { food } = useRouteLoaderData("food");

@@ -67,7 +67,7 @@ function FeatureForm({
                               <option disabled selected>
                                 Select Restaurant
                               </option>
-                              {restaurantData.map((option, index) => (
+                              {restaurantData?.map((option, index) => (
                                 <option value={option._id} key={option._id}>
                                   {option.name}
                                 </option>

@@ -5,20 +5,20 @@ import {
   useRouteLoaderData,
   useSubmit,
 } from "react-router-dom";
-import FoodForm from "../../components/FoodForm";
-import api from "../../services/api";
+import FoodForm from "../../../components/FoodForm";
+import api from "../../../services/api";
 
 function UpdateFood() {
   const navigate = useNavigate();
   const submit = useSubmit();
-  const { food } = useRouteLoaderData("food");
+  const { food, category } = useRouteLoaderData("food");
+  console.log(category);
   const { foodId } = useParams();
   const filterFood = food.filter((item) => item._id === foodId);
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       console.log(values);
       await api.patch(`food/${foodId}`, values);
-      // navigate("../", { replace: true });
     } catch (error) {
       console.log(error);
     } finally {
@@ -34,7 +34,7 @@ function UpdateFood() {
     } catch (error) {
       console.log(error);
     } finally {
-      submit();
+      submit("", { method: "delete" });
     }
   };
   return (
@@ -43,6 +43,7 @@ function UpdateFood() {
         data={filterFood[0]}
         onSubmit={handleSubmit}
         onDelete={handleDelete}
+        categoryData={category}
       />
     </div>
   );

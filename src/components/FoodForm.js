@@ -2,16 +2,16 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 
-function FoodForm({ data = "", onSubmit, isCreate, onDelete }) {
+function FoodForm({ data, onSubmit, isCreate, onDelete, categoryData }) {
   console.log(data);
   const initialValues = {
-    name: data.name,
-    image: data.image,
-    description: data.description,
-    price: data.price,
-    restaurant: data.restaurant,
-    discountPercentage: data.discountPercentage,
-    category: data.category,
+    name: data.name || "",
+    image: data.image || "",
+    description: data.description || "",
+    price: data.price || "",
+    restaurant: data.restaurant || "",
+    discountPercentage: data.discountPercentage || "",
+    category: data.category || "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -32,7 +32,7 @@ function FoodForm({ data = "", onSubmit, isCreate, onDelete }) {
       validationSchema={validationSchema}
     >
       {({ values, isSubmitting }) => (
-        <Form className="form">
+        <Form className="form food">
           <div className="form-title">
             <h2>{values.name}</h2>
           </div>
@@ -57,9 +57,18 @@ function FoodForm({ data = "", onSubmit, isCreate, onDelete }) {
               <label htmlFor="discountPercentage">Discount Percentage</label>
               <Field type="text" name="discountPercentage"></Field>
             </div>
-            <div>
+            <div className="category">
               <label htmlFor="category">Category</label>
-              <Field as="select" name="category"></Field>
+              <div>
+                <img src={values.category.image} alt={values.category.image} />
+                <Field as="select" name="category._id">
+                  {categoryData?.map((item) => (
+                    <option value={item._id} key={item.id}>
+                      {item.name}
+                    </option>
+                  ))}
+                </Field>
+              </div>
             </div>
             <div>
               <label htmlFor="description">Description</label>

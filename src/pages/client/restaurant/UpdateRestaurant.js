@@ -1,12 +1,12 @@
 import React from "react";
-import RestaurantForm from "../../components/RestaurantForm";
+import RestaurantForm from "../../../components/RestaurantForm";
 import {
   useNavigate,
   useParams,
   useRouteLoaderData,
   useSubmit,
 } from "react-router-dom";
-import api from "../../services/api";
+import api from "../../../services/api";
 
 function UpdateRestaurant() {
   const navigate = useNavigate();
@@ -20,9 +20,7 @@ function UpdateRestaurant() {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      console.log(values);
       await api.patch(`restaurant/${restaurantId}`, values);
-      navigate(-1, { replace: true });
     } catch (error) {
       console.log(error);
     } finally {

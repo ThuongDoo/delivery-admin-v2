@@ -32,38 +32,44 @@ function Login() {
   };
   return (
     <div className="login">
-      <h2>Login</h2>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <div className="formGroup">
-              <label htmlFor="email">Email</label>
-              <Field type="text" id="email" name="email" />
-              <ErrorMessage name="email" component="div" className="error" />
-            </div>
-            <div className="formGroup">
-              <label htmlFor="password">Password</label>
-              <Field type="password" id="password" name="password" />
-              <ErrorMessage name="password" component="div" className="error" />
-            </div>
-            <Link className="forgotPassword" to="/forgot-password">
-              Forgot password?
-            </Link>
-            {error && (
-              <div className="error">Invalid email address or password</div>
-            )}
+      <div>
+        <h2>Login</h2>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <div className="formGroup">
+                <label htmlFor="email">Email</label>
+                <Field type="text" id="email" name="email" />
+                <ErrorMessage name="email" component="div" className="error" />
+              </div>
+              <div className="formGroup">
+                <label htmlFor="password">Password</label>
+                <Field type="password" id="password" name="password" />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error"
+                />
+              </div>
+              <Link className="forgotPassword" to="/forgot-password">
+                Forgot password?
+              </Link>
+              {error && (
+                <div className="error">Invalid email address or password</div>
+              )}
 
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Logging in..." : "Login"}
-            </button>
-            <Link to="/register">SIGN UP</Link>
-          </Form>
-        )}
-      </Formik>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Logging in..." : "Login"}
+              </button>
+              <Link to="/register">SIGN UP</Link>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 }

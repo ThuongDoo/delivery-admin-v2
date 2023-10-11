@@ -1,6 +1,6 @@
 import React from "react";
-import RestaurantForm from "../../components/RestaurantForm";
-import api from "../../services/api";
+import RestaurantForm from "../../../components/RestaurantForm";
+import api from "../../../services/api";
 import { useNavigate, useRouteLoaderData, useSubmit } from "react-router-dom";
 
 function CreateRestaurant() {

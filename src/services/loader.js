@@ -32,5 +32,7 @@ export async function foodLoader({ params }) {
   const { restaurantId } = params;
   const res = await api.get(`restaurant/${restaurantId}`);
   const food = res.data.restaurant.food;
-  return { food };
+  const resCategory = await api.get("/category?field=name,image");
+  const category = resCategory.data.category;
+  return { food, category };
 }

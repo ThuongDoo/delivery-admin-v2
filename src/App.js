@@ -12,7 +12,7 @@ import Root from "./pages/Root";
 import { ForgotPassword, Login, Register } from "./pages/auth";
 import * as loader from "./services/loader";
 import * as action from "./services/action";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/client/Dashboard";
 import {
   Admin,
   Category,
@@ -27,9 +27,10 @@ import {
   CreateRestaurant,
   Restaurant,
   UpdateRestaurant,
-} from "./pages/restaurant";
-import { CreateFood, Food, UpdateFood } from "./pages/food";
+} from "./pages/client/restaurant";
+import { CreateFood, Food, UpdateFood } from "./pages/client/food";
 import { Order } from "./pages/order";
+import Client from "./pages/client/Client";
 
 function App() {
   const router = createBrowserRouter(
@@ -41,44 +42,46 @@ function App() {
           loader={loader.userLoader}
           id="root"
         >
-          <Route
-            path="/"
-            element={<Dashboard />}
-            action={action.deleteRestaurantAction}
-          ></Route>
-          <Route
-            path="create"
-            element={<CreateRestaurant />}
-            action={action.restaurantAction}
-          ></Route>
-          <Route
-            path="update-restaurant/:restaurantId"
-            element={<UpdateRestaurant />}
-            action={action.restaurantAction}
-          ></Route>
-          <Route
-            path="restaurant/:restaurantId"
-            element={<Restaurant />}
-            id="restaurant"
-          >
+          <Route element={<Client />}>
             <Route
-              path="food"
-              element={<Food />}
-              loader={loader.foodLoader}
-              id="food"
+              path="/"
+              element={<Dashboard />}
+              action={action.deleteRestaurantAction}
+            ></Route>
+            <Route
+              path="create"
+              element={<CreateRestaurant />}
+              action={action.restaurantAction}
+            ></Route>
+            <Route
+              path="update-restaurant/:restaurantId"
+              element={<UpdateRestaurant />}
+              action={action.restaurantAction}
+            ></Route>
+            <Route
+              path="restaurant/:restaurantId"
+              element={<Restaurant />}
+              id="restaurant"
             >
               <Route
-                path=":foodId"
-                element={<UpdateFood />}
-                action={action.foodAction}
-              ></Route>
-              <Route
-                path="create"
-                element={<CreateFood />}
-                action={action.foodAction}
-              ></Route>
+                path="food"
+                element={<Food />}
+                loader={loader.foodLoader}
+                id="food"
+              >
+                <Route
+                  path=":foodId"
+                  element={<UpdateFood />}
+                  action={action.foodAction}
+                ></Route>
+                <Route
+                  path="create"
+                  element={<CreateFood />}
+                  action={action.foodAction}
+                ></Route>
+              </Route>
+              <Route path="order" element={<Order />}></Route>
             </Route>
-            <Route path="order" element={<Order />}></Route>
           </Route>
           <Route
             path="admin"
@@ -120,6 +123,7 @@ function App() {
                 action={action.categoryAction}
               ></Route>
             </Route>
+            <Route path="*" element={<Navigate to="/admin" replace />}></Route>
           </Route>
         </Route>
         <Route path="login" element={<Login />}></Route>

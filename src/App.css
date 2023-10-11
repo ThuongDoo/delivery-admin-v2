@@ -11,6 +11,8 @@
   height: 100%;
 }
 
+
+
 .App >div>div:nth-child(2){
   flex:1;
   display: flex;

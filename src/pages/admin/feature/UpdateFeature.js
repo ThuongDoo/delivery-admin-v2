@@ -25,7 +25,7 @@ function UpdateFeature() {
     } catch (error) {
       console.log(error);
     } finally {
-      submit("", { method: "post" });
+      submit("", { method: "delete" });
     }
   };
   return (
