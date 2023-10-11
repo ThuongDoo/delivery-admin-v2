@@ -23,70 +23,102 @@ import {
   UpdateFeature,
   Users,
 } from "./pages/admin";
-import CreateRestaurant from "./pages/restaurant/CreateRestaurant";
+import {
+  CreateRestaurant,
+  Restaurant,
+  UpdateRestaurant,
+} from "./pages/restaurant";
+import { CreateFood, Food, UpdateFood } from "./pages/food";
+import { Order } from "./pages/order";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route errorElement={<ErrorHandle />}>
-        <Route errorElement={<AuthHandle />}>
+        <Route
+          errorElement={<AuthHandle />}
+          element={<Root />}
+          loader={loader.userLoader}
+          id="root"
+        >
           <Route
             path="/"
-            element={<Root />}
-            loader={loader.userLoader}
-            id="root"
+            element={<Dashboard />}
+            action={action.deleteRestaurantAction}
+          ></Route>
+          <Route
+            path="create"
+            element={<CreateRestaurant />}
+            action={action.restaurantAction}
+          ></Route>
+          <Route
+            path="update-restaurant/:restaurantId"
+            element={<UpdateRestaurant />}
+            action={action.restaurantAction}
+          ></Route>
+          <Route
+            path="restaurant/:restaurantId"
+            element={<Restaurant />}
+            id="restaurant"
           >
             <Route
-              index
-              element={<Dashboard />}
-              action={action.deleteRestaurantAction}
-            ></Route>
-            <Route
-              path="create"
-              element={<CreateRestaurant />}
-              action={action.restaurantAction}
-            ></Route>
-            <Route path="update-restaurant/:restaurantId"></Route>
-            <Route
-              path="admin"
-              element={<Admin />}
-              loader={loader.categoryLoader}
+              path="food"
+              element={<Food />}
+              loader={loader.foodLoader}
+              id="food"
             >
-              <Route path="users" element={<Users />}></Route>
               <Route
-                path="feature"
-                element={<Feature />}
-                loader={loader.featureLoader}
-                id="feature"
-              >
-                <Route
-                  path="create"
-                  element={<CreateFeature />}
-                  action={action.featureAction}
-                ></Route>
-                <Route
-                  path=":featureId"
-                  element={<UpdateFeature />}
-                  action={action.featureAction}
-                ></Route>
-              </Route>
+                path=":foodId"
+                element={<UpdateFood />}
+                action={action.foodAction}
+              ></Route>
               <Route
-                path="category"
-                element={<Category />}
-                loader={loader.categoryLoader}
-                id="category"
-              >
-                <Route
-                  path="create"
-                  element={<CreateCategory />}
-                  action={action.categoryAction}
-                ></Route>
-                <Route
-                  path=":categoryId"
-                  element={<UpdateCategory />}
-                  action={action.categoryAction}
-                ></Route>
-              </Route>
+                path="create"
+                element={<CreateFood />}
+                action={action.foodAction}
+              ></Route>
+            </Route>
+            <Route path="order" element={<Order />}></Route>
+          </Route>
+          <Route
+            path="admin"
+            element={<Admin />}
+            loader={loader.categoryLoader}
+          >
+            <Route path="users" element={<Users />}></Route>
+            <Route
+              path="feature"
+              element={<Feature />}
+              loader={loader.featureLoader}
+              id="feature"
+            >
+              <Route
+                path="create"
+                element={<CreateFeature />}
+                action={action.featureAction}
+              ></Route>
+              <Route
+                path=":featureId"
+                element={<UpdateFeature />}
+                action={action.featureAction}
+              ></Route>
+            </Route>
+            <Route
+              path="category"
+              element={<Category />}
+              loader={loader.categoryLoader}
+              id="category"
+            >
+              <Route
+                path="create"
+                element={<CreateCategory />}
+                action={action.categoryAction}
+              ></Route>
+              <Route
+                path=":categoryId"
+                element={<UpdateCategory />}
+                action={action.categoryAction}
+              ></Route>
             </Route>
           </Route>
         </Route>

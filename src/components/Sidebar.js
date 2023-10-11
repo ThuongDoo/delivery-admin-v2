@@ -10,11 +10,15 @@ function Sidebar({ title, navlink, button }) {
         {button && <button onClick={() => navigate("create")}>NEW</button>}
       </div>
       <div className="sidebar-nav">
-        {navlink.map((item, index) => (
-          <NavLink key={index} to={item.path}>
-            {item.name}
-          </NavLink>
-        ))}
+        {navlink != "" ? (
+          navlink.map((item, index) => (
+            <NavLink key={index} to={item.path}>
+              {item.name}
+            </NavLink>
+          ))
+        ) : (
+          <h3>You don't have any {title}</h3>
+        )}
       </div>
     </div>
   );

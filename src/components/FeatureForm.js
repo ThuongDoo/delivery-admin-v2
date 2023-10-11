@@ -15,7 +15,6 @@ function FeatureForm({
     description: data.description,
     restaurant: data.restaurant,
   };
-  console.log(data);
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()

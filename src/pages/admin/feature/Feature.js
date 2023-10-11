@@ -3,6 +3,7 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import List from "../../../components/List";
 
 function Feature() {
+  console.log("feature");
   const { feature } = useLoaderData();
   return (
     <div className="section">

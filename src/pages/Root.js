@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 
 function Root() {
+  const { user } = useLoaderData();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user.role === "admin") {
+      navigate("/admin");
+    }
+  }, [user]);
+
   return (
     <div>
       <Header />

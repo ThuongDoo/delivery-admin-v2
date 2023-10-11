@@ -8,6 +8,12 @@ export async function userLoader() {
   return { user, restaurant };
 }
 
+export async function restaurantLoader() {
+  const res = await api.get("/restaurant");
+  const restaurant = res.data.restaurant;
+  return { restaurant };
+}
+
 export async function categoryLoader() {
   const res = await api.get(`/category/`);
   const category = res.data.category;
@@ -20,4 +26,11 @@ export async function featureLoader() {
   const resRestaurant = await api.get("/restaurant?field=name,image");
   const restaurant = resRestaurant.data.restaurant;
   return { feature, restaurant };
+}
+
+export async function foodLoader({ params }) {
+  const { restaurantId } = params;
+  const res = await api.get(`restaurant/${restaurantId}`);
+  const food = res.data.restaurant.food;
+  return { food };
 }

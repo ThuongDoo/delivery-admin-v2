@@ -11,6 +11,10 @@ export async function featureAction() {
 }
 
 export async function restaurantAction() {
+  return redirect("/");
+}
+
+export async function foodAction() {
   return redirect("../");
 }
 

@@ -5,17 +5,11 @@ import {
   useNavigate,
   useRouteLoaderData,
 } from "react-router-dom";
-import List from "../components/List";
 
 function Dashboard() {
   const { user, restaurant } = useRouteLoaderData("root");
   console.log(restaurant);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (user.role === "admin") {
-      navigate("/admin");
-    }
-  }, [user]);
 
   return (
     <div className="dashboard">

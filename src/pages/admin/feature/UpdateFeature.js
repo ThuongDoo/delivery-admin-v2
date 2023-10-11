@@ -15,7 +15,7 @@ function UpdateFeature() {
       console.log(error);
     } finally {
       setSubmitting(false);
-      submit("", { method: "post" });
+      submit("", { method: "patch" });
     }
   };
 
