@@ -29,6 +29,8 @@ textarea {
 
 
 .error {
+  box-sizing: border-box;
+  width: 100%;
   color: red;
   font-size: 12px;
   margin-top: 5px; /* Thêm khoảng cách trên để ngăn lỗi trôi lên lần tiếp theo */
@@ -103,6 +105,18 @@ button:hover {
   text-align: left;
   margin-bottom: 15px;
   width: 100%;
+}
+
+.formGroup > .error {
+  /* box-sizing: border-box; */
+  width:auto;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  /* Thêm khoảng cách trên để ngăn lỗi trôi lên lần tiếp theo */
 }
 
 

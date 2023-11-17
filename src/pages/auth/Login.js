@@ -21,11 +21,13 @@ function Login() {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      await api.post("/auth/login", values);
-      navigate("/");
+      await api.post("/auth/login", values).then((res) => {
+        console.log(res.data);
+      });
     } catch (error) {
       setError(error);
     } finally {
+      navigate("/");
       setSubmitting(false);
       resetForm();
     }

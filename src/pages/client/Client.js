@@ -7,6 +7,8 @@ function Client() {
   useEffect(() => {
     if (user.role === "admin") {
       navigate("/admin");
+    } else if (user.role === "user") {
+      navigate("/login");
     }
   }, [user]);
   return <Outlet />;
