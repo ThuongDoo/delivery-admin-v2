@@ -423,3 +423,42 @@ button:hover {
   height: 50px;
   border-radius: 10px;
 }
+
+.order {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+}
+
+.order-content{
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  gap: 1.5rem;
+}
+
+.orderItem {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border: 1px solid black;
+  align-items: center;
+}
+
+.orderItem img{
+  width: 80px;
+  height: 80px;
+}
+
+.orderItem >div:nth-child(2){
+  display: flex;
+  flex-direction: column;
+  align-items: start; 
+  justify-content: space-around;
+}
+
+.orderItem>div:first-child{
+  height: 80px;
+}

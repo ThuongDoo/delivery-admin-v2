@@ -36,3 +36,10 @@ export async function foodLoader({ params }) {
   const category = resCategory.data.category;
   return { food, category };
 }
+
+export async function orderLoader({ params }) {
+  const { restaurantId } = params;
+  const res = await api.get(`order/restaurant/${restaurantId}`);
+  const order = res.data;
+  return { order };
+}

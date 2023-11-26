@@ -29,7 +29,7 @@ import {
   UpdateRestaurant,
 } from "./pages/client/restaurant";
 import { CreateFood, Food, UpdateFood } from "./pages/client/food";
-import { Order } from "./pages/order";
+import { Order, UpdateOrder } from "./pages/client/order";
 import Client from "./pages/client/Client";
 
 function App() {
@@ -80,7 +80,18 @@ function App() {
                   action={action.foodAction}
                 ></Route>
               </Route>
-              <Route path="order" element={<Order />}></Route>
+              <Route
+                path="order"
+                element={<Order />}
+                loader={loader.orderLoader}
+                id="order"
+              >
+                <Route
+                  path=":orderId"
+                  element={<UpdateOrder />}
+                  action={action.orderAction}
+                ></Route>
+              </Route>
             </Route>
           </Route>
           <Route

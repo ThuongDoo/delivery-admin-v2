@@ -18,6 +18,10 @@ export async function foodAction() {
   return redirect("../");
 }
 
+export async function orderAction() {
+  return redirect("../");
+}
+
 export async function deleteRestaurantAction({ request }) {
   const formData = await request.formData();
   const id = formData.get("restaurantId");
