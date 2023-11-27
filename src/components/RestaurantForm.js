@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-function RestaurantForm({ data = "", onSubmit, isCreate }) {
+function RestaurantForm({ data = "", onSubmit, isCreate, categoryData }) {
   const initialValues = {
     name: data.name,
     image: data.image,
@@ -12,7 +12,9 @@ function RestaurantForm({ data = "", onSubmit, isCreate }) {
     foods: data.foods,
     address: data.address,
     user: data.user,
+    category: data.category ? data.category[0] : "",
   };
+  console.log(data);
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required("Name is required")
@@ -21,7 +23,9 @@ function RestaurantForm({ data = "", onSubmit, isCreate }) {
     description: Yup.string()
       .required("Description is required")
       .max(200, "Description must be at most 200 characters long"),
+    category: Yup.string().required("no category"),
   });
+  console.log(categoryData);
   return (
     <Formik
       enableReinitialize={true}
@@ -50,6 +54,34 @@ function RestaurantForm({ data = "", onSubmit, isCreate }) {
               <div>
                 <label htmlFor="address">Address</label>
                 <Field type="text" name="address"></Field>
+              </div>
+              <div className="category">
+                <label htmlFor="category">Category</label>
+                <div>
+                  <img
+                    src={
+                      categoryData.find(
+                        (item) => item._id.toString() === values.category
+                      )?.image
+                    }
+                    alt={"no img"}
+                  />
+                  <Field as="select" name="category">
+                    <option value="" disabled>
+                      select
+                    </option>
+                    {categoryData?.map((item) => (
+                      <option value={item._id} key={item._id}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </Field>
+                </div>
+                <ErrorMessage
+                  className="error"
+                  name="category"
+                  component="div"
+                />
               </div>
               <div>
                 <label htmlFor="description">Description</label>

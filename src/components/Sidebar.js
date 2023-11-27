@@ -17,7 +17,9 @@ function Sidebar({ title, navlink, button, filter, onFilterChange }) {
             }}
           >
             {filter.map((item) => (
-              <option value={item}>{item}</option>
+              <option value={item} key={item}>
+                {item}
+              </option>
             ))}
           </select>
         )}

@@ -11,7 +11,7 @@ import api from "../../../services/api";
 function UpdateRestaurant() {
   const navigate = useNavigate();
   const submit = useSubmit();
-  const { restaurant } = useRouteLoaderData("root");
+  const { restaurant, category } = useRouteLoaderData("root");
   const { restaurantId } = useParams();
   const fileredRestaurant = restaurant.filter(
     (item) => item._id === restaurantId
@@ -30,7 +30,11 @@ function UpdateRestaurant() {
   };
   return (
     <div>
-      <RestaurantForm data={fileredRestaurant[0]} onSubmit={handleSubmit} />
+      <RestaurantForm
+        data={fileredRestaurant[0]}
+        onSubmit={handleSubmit}
+        categoryData={category}
+      />
     </div>
   );
 }

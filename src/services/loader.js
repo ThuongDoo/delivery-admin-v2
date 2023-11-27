@@ -5,12 +5,15 @@ export async function userLoader() {
   const user = res.data.user;
   const resRestaurant = await api.get("/restaurant");
   const restaurant = resRestaurant.data.restaurant;
-  return { user, restaurant };
+  const resCategory = await api.get("/category?field=name,image");
+  const category = resCategory.data.category;
+  return { user, restaurant, category };
 }
 
 export async function restaurantLoader() {
   const res = await api.get("/restaurant");
   const restaurant = res.data.restaurant;
+
   return { restaurant };
 }
 

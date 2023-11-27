@@ -3,6 +3,7 @@ import api from "../services/api";
 
 // const async function
 export async function categoryAction() {
+  console.log("create");
   return redirect("../");
 }
 

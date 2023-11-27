@@ -25,6 +25,7 @@ function FeatureForm({
       .required("Description is required")
       .max(200, "Description must be at most 200 characters long"),
   });
+  console.log(restaurantData);
   return (
     <Formik
       enableReinitialize={true}
@@ -58,7 +59,15 @@ function FeatureForm({
                       values.restaurant.map((item, index) => (
                         <div key={index} className="item">
                           <div>
-                            <img src={item.image} alt={item.name} />
+                            <img
+                              src={
+                                restaurantData.find(
+                                  (restaurant) =>
+                                    restaurant._id.toString() === item._id
+                                )?.image
+                              }
+                              alt={"no img"}
+                            />
                             <Field
                               name={`restaurant.${index}._id`}
                               as="select"

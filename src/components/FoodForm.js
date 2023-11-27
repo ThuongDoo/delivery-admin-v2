@@ -11,7 +11,7 @@ function FoodForm({ data, onSubmit, isCreate, onDelete, categoryData }) {
     price: data.price || "",
     restaurant: data.restaurant || "",
     discountPercentage: data.discountPercentage || "",
-    category: data.category || "",
+    // category: data.category || "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -57,7 +57,7 @@ function FoodForm({ data, onSubmit, isCreate, onDelete, categoryData }) {
               <label htmlFor="discountPercentage">Discount Percentage</label>
               <Field type="text" name="discountPercentage"></Field>
             </div>
-            <div className="category">
+            {/* <div className="category">
               <label htmlFor="category">Category</label>
               <div>
                 <img src={values.category.image} alt={values.category.image} />
@@ -69,7 +69,7 @@ function FoodForm({ data, onSubmit, isCreate, onDelete, categoryData }) {
                   ))}
                 </Field>
               </div>
-            </div>
+            </div> */}
             <div>
               <label htmlFor="description">Description</label>
               <Field as="textarea" name="description"></Field>
